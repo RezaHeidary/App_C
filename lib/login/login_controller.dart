@@ -1,10 +1,6 @@
-import 'dart:math';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
@@ -22,6 +18,7 @@ class LoginController extends GetxController {
       androidMinimumVersion: '12');
 
   getForLogin() {
+    getToken();
     stackIndex.value = 1;
   }
 
@@ -29,18 +26,9 @@ class LoginController extends GetxController {
     stackIndex.value = 0;
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-    getToken();
-  }
-
   getToken() async {
     print("token ::::: ");
-    await WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp();
-    await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
-
     var sms = FirebaseMessaging.instance;
     var token = await sms.getToken();
     print(token);
