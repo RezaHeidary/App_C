@@ -40,12 +40,17 @@ dependencies:
   get: ^4.6.5
   flutter_native_splash: ^2.2.16
   html_editor_enhanced: ^2.5.0
+  flutter_widget_from_html_core: ^0.9.1
+  firebase_messaging: ^14.2.1
+  firebase_core: ^2.4.1
+  firebase_auth: ^4.2.5
+
+
 
 flutter_icons:
   android: "launcher_icon"
   ios: true
   image_path: "assets/pen.png"
-
   
   
   
@@ -102,7 +107,7 @@ flutter_native_splash:
     # 640 pixels in diameter.
     # App icon without an icon background: This should be 1152×1152 pixels, and fit within a circle
     # 768 pixels in diameter.
-    #image: assets/android12splash.png
+    image: assets/pen.png
 
     # Splash screen background color.
     #color: "#42a5f5"
@@ -111,7 +116,7 @@ flutter_native_splash:
     #icon_background_color: "#111111"
 
     # The branding property allows you to specify an image used as branding in the splash screen.
-    branding: assets/pen.png
+    #branding: assets/pen.png
 
     # The image_dark, color_dark, icon_background_color_dark, and branding_dark set values that
     # apply when the device is in dark mode. If they are not specified, the app will use the
@@ -134,7 +139,7 @@ flutter_native_splash:
   #color_dark_ios: "#042a49"
   #color_web: "#42a5f5"
   #color_dark_web: "#042a49"
-  #image_android: assets/splash-android.png
+  image_android: assets/pen.png
   #image_dark_android: assets/splash-invert-android.png
   #image_ios: assets/splash-ios.png
   #image_dark_ios: assets/splash-invert-ios.png

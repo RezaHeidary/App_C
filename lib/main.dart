@@ -1,4 +1,4 @@
-import 'package:appd/mvc/view/login_screen.dart';
+import 'package:appd/login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
