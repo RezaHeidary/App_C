@@ -1,5 +1,4 @@
 import 'package:appd/core/constant.dart';
-import 'package:appd/home/home_screen.dart';
 import 'package:appd/login/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -56,6 +55,7 @@ class LoginWidget {
         Padding(
           padding: const EdgeInsets.all(40),
           child: TextField(
+            controller: loginController.textEditingControllerCode.value,
             decoration: InputDecoration(
               hintText: "Code",
             ),
@@ -67,7 +67,7 @@ class LoginWidget {
         ),
         ElevatedButton(
             onPressed: () {
-              Get.off(HomeScreen());
+              loginController.getCheckCodeForLogin();
             },
             child: Text(
               "Login",
@@ -83,7 +83,6 @@ class LoginWidget {
           },
           child: Text(
             "back",
-            style: TextStyle(fontSize: 20, color: Colors.blue),
           ),
         ),
       ],

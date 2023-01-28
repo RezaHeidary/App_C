@@ -1,21 +1,16 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:appd/home/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+
+import '../service/internet_connection_checker.dart';
 
 class LoginController extends GetxController {
   var stackIndex = 0.obs;
-  var acs = ActionCodeSettings(
-      // URL you want to redirect back to. The domain (www.example.com) for this
-      // URL must be whitelisted in the Firebase Console.
-      url: 'https://www.example.com/finishSignUp?cartId=1234',
-      // This must be true
-      handleCodeInApp: true,
-      androidPackageName: 'com.example.android',
-      // installIfNotAvailable
-      // androidInstallApp: true,
-      // minimumVersion
-      androidMinimumVersion: '12');
+  var message;
+  var textEditingControllerCode = TextEditingController().obs;
 
   getForLogin() {
     getToken();
@@ -32,16 +27,52 @@ class LoginController extends GetxController {
     var sms = FirebaseMessaging.instance;
     var token = await sms.getToken();
     print(token);
+    getMessaging();
+  }
 
-    //   await FirebaseAuth.instance.signInWithEmailAndPassword(
-    //     password: 'rrezah433',
-    //     email: "rrezah2702@gmail.comm",
-    //   );
+  getMessaging() async {
+    await FirebaseMessaging.onMessage.listen((event) {
+      message = event.data["pass"];
+      print(event.data["pass"]);
+    });
+  }
 
-    //   await FirebaseAuth.instance.sendSignInLinkToEmail(
-    //     actionCodeSettings: await acs,
-    //     email: "rrezah4338@gmail.comm",
-    //   );
-    // }
+  getCheckCodeForLogin() {
+    message == textEditingControllerCode.value.text
+        ? Get.offAll(HomeScreen())
+        : null;
+    if (message == textEditingControllerCode.value.text) {
+      GetStorage().write("isLogin", "true");
+      Get.offAll(HomeScreen());
+    }
+  }
+
+  getServiceInternet() async {
+    await InternetConnection.serviesInternetConnectionChecker()
+        ? null
+        : getDefaultDialogForInternet();
+  }
+
+  getDefaultDialogForInternet() {
+    Get.defaultDialog(
+        barrierDismissible: false,
+        title: "ER",
+        content: Center(
+            child: Text(
+          "Test the Internet",
+          style: TextStyle(fontSize: 25),
+        )),
+        confirm: TextButton(
+            onPressed: () {
+              Get.back();
+              getServiceInternet();
+            },
+            child: Text("Ok")));
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    getServiceInternet();
   }
 }

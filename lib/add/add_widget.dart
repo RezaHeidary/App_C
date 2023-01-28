@@ -39,12 +39,12 @@ class AddWidget {
   //set title from modal
   static showDialog() {
     return Get.defaultDialog(
-        title: "Insert a title",
+        title: "insertTitle".tr,
         content: Padding(
           padding: const EdgeInsets.all(8.0),
           child: TextField(
             controller: addController.textEditingController.value,
-            decoration: InputDecoration(hintText: "new title"),
+            decoration: InputDecoration(hintText: "newtitle".tr),
             style: TextStyle(fontSize: 20),
           ),
         ),
@@ -94,7 +94,6 @@ class AddWidget {
       child: Icon(
         (Icons.edit),
       ),
-      backgroundColor: Colors.pink,
     );
   }
 }

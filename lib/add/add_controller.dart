@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 
 class AddController extends GetxController {
   Rx<TextEditingController> textEditingController = TextEditingController().obs;
-  var title = "Title Text".obs;
-  var body = "Add Body".obs;
+  var title = "titleText".tr.obs;
+  var body = "bodyText".tr.obs;
   getTitle() {
     if (textEditingController.value.text.isNotEmpty) {
       title.value = textEditingController.value.text;
