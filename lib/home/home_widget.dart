@@ -11,6 +11,7 @@ class HomeWidget {
   static HomeController homeController = Get.put(HomeController());
   static HomeDrawerController homeDrawerController =
       Get.put(HomeDrawerController());
+
   //widget add to ListView
   static widgetAddListView() {
     return Padding(

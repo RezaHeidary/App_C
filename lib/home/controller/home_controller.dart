@@ -78,7 +78,7 @@ class HomeController extends GetxController {
 
     await flutterLocalNotificationsPlugin.initialize(initializationSettings,
         onDidReceiveNotificationResponse: (details) {
-      Get.offAll(HomeScreen());
+        SystemNavigator.selectMultiEntryHistory();
     });
   }
 }
