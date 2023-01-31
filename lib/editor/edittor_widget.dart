@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:html_editor_enhanced/html_editor.dart';
 
-import '../add/add_widget.dart';
-
 class EditorWidget {
   EditorWidget._();
   static EidtorController eidtorController = Get.put(EidtorController());
   //widget HtmlEditor
-  static widgetHtmlEditor() {
+  static widgetHtmlEditor(str) {
     return Column(
       children: [
         HtmlEditor(
@@ -18,11 +16,12 @@ class EditorWidget {
           controller: eidtorController.htmlController.value,
           htmlEditorOptions: HtmlEditorOptions(
             hint: "write here...",
+            initialText: str,
             shouldEnsureVisible: true,
           ),
           callbacks: Callbacks(
             onChangeContent: (p0) {
-              AddWidget.addController.body.value = p0!;
+              eidtorController.body.value = p0!;
             },
           ),
         )

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'home_widget.dart';
 
 class HomeView extends StatelessWidget {
@@ -6,8 +7,13 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: 1,
-        itemBuilder: ((context, index) => HomeWidget.widgetAddListView()));
+    return Obx(
+      () => HomeWidget.apiController.homeModleList.length == 0
+          ? Center(child: Text("Add Text"))
+          : ListView.builder(
+              itemCount: HomeWidget.apiController.homeModleList.length,
+              itemBuilder: ((context, index) =>
+                  HomeWidget.widgetAddListView(index))),
+    );
   }
 }

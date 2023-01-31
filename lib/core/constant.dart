@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 
 class Constant {
@@ -15,11 +16,13 @@ class Constant {
 
   static widgetAppBar(str) {
     return AppBar(
-      title: Center(
-          child: Text(
+      title: Text(
         str,
         style: TextStyle(fontSize: 30),
-      )),
+      ),
+      centerTitle: true,
     );
   }
+
+  static String api = dotenv.get("API_HOST", fallback: "");
 }

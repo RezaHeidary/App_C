@@ -1,4 +1,7 @@
-import 'package:appd/add/add_controller.dart';
+import 'package:appd/add/controller/add_api_controller.dart';
+import 'package:appd/add/controller/add_controller.dart';
+import 'package:appd/controller/api_controller.dart';
+import 'package:appd/editor/editor_controller.dart';
 import 'package:appd/editor/editor_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
@@ -8,6 +11,9 @@ class AddWidget {
   AddWidget._();
 
   static AddController addController = Get.put(AddController());
+  static EidtorController eidtorController = Get.put(EidtorController());
+  static AddApiController addApiController = Get.put(AddApiController());
+  static ApiController apiController = Get.put(ApiController());
 
 //widget add title text
   static widgetRowForTitle() {
@@ -76,7 +82,7 @@ class AddWidget {
           () => Padding(
             padding: const EdgeInsets.all(8.0),
             child: HtmlWidget(
-              addController.body.value,
+              eidtorController.body.value,
               enableCaching: true,
               onLoadingBuilder: ((context, element, loadingProgress) =>
                   CircularProgressIndicator()),
@@ -90,9 +96,32 @@ class AddWidget {
   //widget change button
   static widgetChangeButton() {
     return FloatingActionButton(
-      onPressed: () {},
+      onPressed: () async {
+        Get.snackbar("Add", "");
+        await addApiController.getAddPost();
+      },
       child: Icon(
         (Icons.edit),
+      ),
+    );
+  }
+
+  static widgetAppBar(str) {
+    return AppBar(
+      leading: IconButton(
+        onPressed: () {
+          apiController.getList();
+
+          Get.back();
+        },
+        icon: Icon(
+          Icons.arrow_back,
+        ),
+      ),
+      centerTitle: true,
+      title: Text(
+        str,
+        style: TextStyle(fontSize: 30),
       ),
     );
   }

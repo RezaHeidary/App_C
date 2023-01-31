@@ -1,4 +1,4 @@
-class HomeModel {
+class HomeAndEditModel {
   String? body;
   String? title;
   String? date;
@@ -6,9 +6,9 @@ class HomeModel {
   String? updatedAt;
   String? publishedAt;
   int? id;
-  HomeModel({this.body, this.title, this.date});
+  HomeAndEditModel({this.body, this.title, this.date});
 
-  HomeModel.fromJson(Map<String, dynamic> element) {
+  HomeAndEditModel.fromJson(Map<String, dynamic> element) {
     id = element['id'];
     title = element['attributes']["title"];
     body = element['attributes']["body"];

@@ -1,4 +1,3 @@
-import 'package:appd/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -78,7 +77,7 @@ class HomeController extends GetxController {
 
     await flutterLocalNotificationsPlugin.initialize(initializationSettings,
         onDidReceiveNotificationResponse: (details) {
-        SystemNavigator.selectMultiEntryHistory();
+      SystemNavigator.selectMultiEntryHistory();
     });
   }
 }

@@ -1,7 +1,7 @@
-class AddModel {
+class EditModel {
   static String body = "body";
   static String title = "title";
   static String date = "date";
 
-  AddModel._();
+  EditModel._();
 }

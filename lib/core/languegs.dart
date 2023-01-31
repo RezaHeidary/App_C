@@ -9,7 +9,8 @@ class Messages extends Translations {
           'titleText': 'Add Title',
           'bodyText': 'Add Body',
           'insertTitle': 'Insert Title',
-          'newtitle': 'New Title'
+          'newtitle': 'New Title',
+          'appEdit': 'Edit'
         },
         'fa_IR': {
           'appHome': 'خانه',
@@ -17,7 +18,8 @@ class Messages extends Translations {
           'titleText': 'موضوع',
           'bodyText': 'افزودن متن',
           'insertTitle': 'موضوع ',
-          'newtitle': 'بدنه'
+          'newtitle': 'بدنه',
+          'appEdit': 'ویرایش'
         }
       };
 }
